@@ -475,4 +475,77 @@ background-size:37.5px 50px;
   
   }
   
-  
+
+
+.panel-heading{
+  float: center;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.outer {
+  position: relative;
+  margin: auto;
+  width: 50px;
+  margin-top: 10px;
+  cursor: pointer;
+  float: left;
+}
+
+.inner {
+  width: inherit;
+  text-align: center;
+  float: left;
+}
+
+label { 
+  font-size: .8em; 
+  line-height: 3em;
+  text-transform: uppercase;
+  color: black;
+  transition: all .3s ease-in;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.inner:before, .inner:after {
+  position: absolute;
+  content: '';
+  height: 1px;
+  width: inherit;
+  background: #FFC107;
+  left: 0;
+  transition: all .3s ease-in;
+}
+
+.inner:before {
+  top: 50%; 
+  transform: rotate(45deg);  
+}
+
+.inner:after {  
+  bottom: 50%;
+  transform: rotate(-45deg);  
+}
+
+.outer:hover label {
+  opacity: 1;
+}
+
+.outer:hover .inner:before,
+.outer:hover .inner:after {
+  transform: rotate(0);
+}
+
+.outer:hover .inner:before {
+  top: 0;
+}
+
+.outer:hover .inner:after {
+  bottom: 0;
+}
+
+

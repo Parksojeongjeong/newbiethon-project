@@ -1,4 +1,4 @@
-<style>.speech-bubble {font-family: 'SangSangFlowerRoad';}</style>
+<style>.speech-bubble {font-style:italic;}</style>
 <div class="container">
   <div class='speech-bubble'>살림을 부탁해<br></div>
 						<div class="navi">
@@ -17,7 +17,8 @@
 					<li class="notifs">
 						<a data-toggle="dropdown"  aria-expanded="false" class="notifications">가족공지&nbsp;</a>
 							<div class="dropdown-menu" role="menu">
-							    	<%=link_to '가족 공지', posts_path %>
+							    	<%=link_to '메모', posts_path %>
+							    	<%=link_to '공지작성', home_gongji_path%>
 							</div>
 						</li>
 					</ul>

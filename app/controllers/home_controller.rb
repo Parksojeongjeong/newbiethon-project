@@ -4,8 +4,43 @@ class HomeController < ApplicationController
     def house
       
     end
+    def gongji
+    end
+    
+    def gongjiindex
+      @post = Post.all
+    end
+    def gongjicreate
+      @post = Post.new
+      @post.title = params[:title]
+      @post.content = params[:content]
+      @post.save
+      redirect_to "/home/gongjishow/#{@post.id}"
+    end
+    
+    def gongjishow
+      @post = Post.find(params[:post_id])
+    end
+    
+    def gongjiedit
+      @post = Post.find(params[:post_id])
+    end
+    
+    def gongjiupdate
+      @post = Post.find(params[:post_id])
+      @post.title = params[:title]
+      @post.content = params[:content]
+      @post.save
+      redirect_to root_path
+    end
+    def gongjidestroy
+      @post = Post.find(params[:id])
+      @post.destroy
+      redirect_to "/home/gongjidex"
+    end
     
     def index
+     @title =  Post.pluck(:title)
     end
     
     def new

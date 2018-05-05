@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   # root 'home#index'
   root 'home#house'
-  
+  get 'home/gongjiindex' => 'home#gongjiindex'
+  get 'home/gongjishow/:id' => 'home#gongjishow'
+  get 'home/gongjiedit/:id' => 'home#gongjishow'
+  get 'home/gongjiupdate/:id' => 'home#gongjishow'
+  get 'home/gongjidestroy/:id' => 'home#gongjidestroy'
+  get "home/gongjicreate" => 'home#gongjicreate'
   get 'home/refer' => 'home#refer'
   get 'home/gongji' => 'home#gongji'
   get 'home/clean' => 'home#clean'
