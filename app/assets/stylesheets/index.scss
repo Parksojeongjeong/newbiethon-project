@@ -1,0 +1,478 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$y: #d8ebff;
+$g: #bbb;
+$bg: #222;
+$gr: #3cb558;
+$t: transparent;
+
+
+
+  .container {
+  max-width: 110%;
+  
+ 
+  }
+  .navi {
+      display: inline;
+      float: right;
+    ul {
+      margin:0 40px;
+      padding:0;
+      float: left;
+
+      li.notifs {
+        position: relative;
+        .notifs-hidden {
+          position: absolute;
+          display:none;
+        }
+      }
+      li.notifs.notif-hidden.active {
+          display:block;
+      }
+
+      li {
+        float:left;
+        list-style-type: none;
+
+        a {
+          float:left;
+          display: inline-block;
+          padding: 30px 12px;
+          color: #373737;
+          border-bottom:1px solid transparent;
+          
+          text-decoration: none;
+          font-weight: bold;
+          min-width:80px;
+          text-align: center;
+          font-size: 13px;
+        }
+
+        a.mens {
+          &:hover {
+            background-color:#FF5500;
+            color: #efefef;
+          }
+        }
+        a.womens {
+          &:hover {
+            
+            background-color:#FF2525;
+            color: #efefef;
+          }
+        }
+        a.kids {
+          &:hover {
+            background-color:#7AB900;
+            color: #efefef;
+          }
+        }
+        a.notifications {
+          cursor: pointer;
+          .number {
+              padding:3px 7px;
+              background-color: #59656b;
+              border-radius: 100%;
+              color: white;
+              margin-left: 8px;
+              line-height: 0;
+            }
+
+          &:hover {
+            background-color:#00B7F3;
+            color: #efefef;
+            .number {
+              background-color: #efefef;
+              color: #00B7F3;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .road{
+    
+    position:absolute;
+    width:100%;
+    height:40vh;
+    bottom:0;
+    background:linear-gradient(to bottom, darken($gr, 15%), $gr 30%);
+    overflow:hidden;
+    transform-style:preserve-3d;
+    box-shadow:inset 0 3px 0 0 $bg;
+    min-width:1000px;
+    &:before{
+      content:'';
+      position:absolute;
+      width:200%;
+      left:-50%;
+      height:200px;
+      top:100px;
+      background:repeating-linear-gradient(-35deg, $t, $t 200px, darken($g, 70%) 200px, darken($g, 70%) 202px, $t 202px), $g;
+      background-size:700px 100%;
+      transform:skewY(2.5deg) rotateX(-50deg);
+      animation:sidewalk 4s linear infinite;
+      box-shadow:inset 0 0 0 3px $bg;
+      @keyframes sidewalk{
+        0%{
+          background-position:0% 50%;
+        }
+        100%{
+          background-position:-200% 50%;
+        }
+      }
+      
+    }
+  }
+  
+  
+  .speech-bubble {
+  
+  float: left;
+  left: 8em;
+  position: relative;
+  margin: .5em auto;
+  padding: 1em;
+  width: 10em; height: 4em;
+  border-radius: .25em;
+  transform: rotate(-4deg) rotateY(15deg);
+  background: #629bdd;
+  font: 2em/4 Century Gothic, Verdana, sans-serif;
+  text-align: center;
+  }
+  .speech-bubble:before, .speech-bubble:after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  }
+  .speech-bubble:after {
+  top: 0; right: 0; bottom: 0; left: 0;
+  border-radius: inherit;
+  transform: rotate(2deg) translate(.35em, -.15em) scale(1.02);
+  background: #f4fbfe;
+  }
+  .speech-bubble:before {
+  border: solid 0 transparent;
+  border-right: solid 3.5em #f4fbfe;
+  border-bottom: solid .25em #629bdd;
+  bottom: .25em; left: 1.25em;
+  width: 0; height: 1em;
+  transform: rotate(45deg) skewX(75deg);
+  }
+  .wrap{
+    
+    width:100px;
+    height:400px;
+    perspective:10000px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translateX(-50%) translateY(-50%);
+    .legs{
+      width:7px;
+      height:75px;
+      background:$bg;
+      position:absolute;
+      z-index:3;
+      bottom:-10px;
+      left:0;
+      border-radius:10px;
+      transform-origin:50% 0%;
+      animation:run1 0.35s ease-in-out infinite alternate;
+      &.left{
+        left:50px;
+        z-index:-1;
+        animation-delay:-0.175s;
+        .lower{
+          animation-delay:-0.175s;
+          &:before{
+            animation-delay:-0.175s;
+          }
+        }
+      }
+      @keyframes run1{
+        0%{
+          transform:rotate(-50deg);
+        }
+        100%{
+          transform:rotate(70deg);
+        }
+      }
+      .lower{
+        position:absolute;
+        bottom:-67.5px;
+        height:70px;
+        width:7px;
+        background:$bg;
+        border-radius:10px;
+        transform-origin:75% 0%;
+        animation:run2 0.35s ease-in-out infinite alternate;
+         @keyframes run2{
+          0%{
+            transform:rotate(10deg);
+          }
+          100%{
+            transform:rotate(90deg);
+          }
+       }
+        &:after{
+          content:'';
+          position:absolute;
+          width:35px;
+          height:10px;
+          background:$bg;
+          left:-1.5px;
+          bottom:0;
+          border-radius:10px;
+          transform-origin:10% 50%;
+          animation:run3 0.35s ease-in-out infinite alternate;
+          @keyframes run3{
+          0%{
+            transform:rotate(10deg);
+          }
+          100%{
+            transform:rotate(50deg);
+          }
+       }
+        }
+      }
+    }
+    .plug{
+      content:'';
+      position:absolute;
+      width:15px;
+      height:20px;
+      background:$bg;
+      z-index:9;
+      border-radius:0 20px 20px 0;
+      left:-195px;
+      bottom:52.5px;
+      &:before, &:after{
+        content:'';
+        position:absolute;
+        top:2px;
+        width:5px;
+        height:3px;
+        background:$g;
+        border:2px solid $bg;
+        left:-7px;
+      }
+      &:after{
+        top:10px
+      }
+      animation:plug 0.25s linear infinite alternate;
+      @keyframes plug{
+        0%{
+          transform:translateY(0px);
+        }
+        100%{
+          transform:translateY(-25px);
+        }
+      }
+      
+    }
+    &:after{
+      top:225px;
+      left:-100px;
+      transform:rotate(-90deg);
+      z-index:-1;
+      content:'';
+      position:absolute;
+      width:35px;
+      height:200px;
+      background: 
+radial-gradient(circle at 100% 50%, transparent 20%, $bg 21%, $bg 34%, transparent 35%, transparent),
+radial-gradient(circle at 0% 50%, transparent 20%, $bg 21%, $bg 34%, transparent 35%, transparent) 0px -25px;
+background-size:37.5px 50px;
+      background-position:-20px -25px, -20px -50px;
+      animation:cord 2s linear infinite;
+      @keyframes cord{
+        0%{
+          background-position:-20px -25px, -20px -50px;
+        }
+        100%{
+          background-position:-20px -225px, -20px -250px;
+        }
+      }
+    }
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      animation:run 0.35s ease-in-out infinite alternate;
+      @keyframes run{
+        0%{
+          transform:rotateY(45deg) rotateX(-10deg) rotate(15deg);
+          
+        }
+        100%{
+          transform:rotateY(40deg) rotateX(-20deg) rotate(10deg);
+        }
+      }
+
+      .face{
+          margin: 0;
+          width: 200px;
+          height: 400px;
+          display: block;
+          position: absolute;
+          background:$y;
+          box-shadow:inset 0 0 0 3px $bg;
+          &:nth-of-type(1){ 
+            //front
+            transform: rotateY(   0deg ) translateZ( 100px );
+            background:transparent;
+            transform-style:preserve-3d;
+            
+            &:before{
+              content:'';
+              position:absolute;
+              width:100%;
+              height:100%;
+              box-shadow:inset 0 0 0 3px $bg, inset 0 0 0 15px darken($y, 5%), inset 0 0 0 18px $bg;
+            }
+            .topdoor, .bottomdoor{
+              overflow:hidden;
+              box-shadow:inset 0 0 0 3px $bg;
+              &:before{
+                content:'';
+                background:$g;
+                width:50px;
+                height:10px;
+                position:absolute;
+                left:15px;
+                top:60px;
+                box-shadow:inset 0 0 0 3px $bg;
+              }
+              &:after{
+                content:'';
+                position:absolute;
+                width:100%;
+                height:10px;
+                bottom:0;
+                left:0;
+                background:$g;
+                box-shadow:inset 0 0 0 3px $bg;
+              }
+            }
+            .topdoor{
+              position:absolute;
+              width:calc(100% - 25px);
+              background:darken($y, 2.5%);
+              height:100px;
+              top:12.5px;
+              left:12.5px;
+              transform-origin:100% 50%;
+              border-radius:10px;
+              animation:swingopen 1s ease-in-out infinite alternate;
+              @keyframes swingopen{
+                0%{
+                  transform:rotateY(0deg);
+                }
+                20%{
+                  transform:rotateY(5deg);
+                }
+                70%{
+                  transform:rotateY(0deg);
+                }
+                80%{
+                  transform:rotateY(2.5deg);
+                }
+                100%{
+                  transform:rotateY(0deg);
+                }
+              }
+            }
+            .bottomdoor{
+              position:absolute;
+              width:calc(100% - 25px);
+              height:275px;
+              bottom:12.5px;
+              left:12.5px;
+              border-radius:10px;
+              background:darken($y, 2.5%);
+              transform-origin:100% 50%;
+              transform:rotateY(0deg);
+              animation:swingopen 1s ease-in-out infinite alternate;
+              animation-delay:0.25s;
+              .smile{
+                position:absolute;
+                width:30px;
+                height:15px;
+                bottom:30px;
+                left:calc(50% - 7.5px);
+                background:#000;
+                border-radius:0 0 50px 50px;
+                &:before{
+                  content:'';
+                  position:absolute;
+                  left:-10px;
+                  top:-15px;
+                  background:$bg;
+                  border-radius:100%;
+                  width:10px;
+                  height:10px;
+                  box-shadow:40px 0 0 0 $bg;
+                }
+              }
+              &:after{
+                bottom:auto;
+                top:0;
+              }
+            }
+            }
+          &:nth-of-type(2){ 
+            //back
+            transform: rotateX( 180deg ) translateZ( 100px );
+            background:#ddd;
+            }
+          &:nth-of-type(3){ 
+            //right
+            transform: rotateY(  90deg ) translateZ( 100px );
+            background:darken($y, 10%);
+            &:before{
+              content:'';
+              position:absolute;
+              width:100%;
+              height:100%;
+              left:0;
+              top:0;
+              background:$g;
+              box-shadow:inset 0 0 0 3px $bg;
+            }
+          }
+          &:nth-of-type(4){ 
+            //left
+            transform: rotateY( -90deg ) translateZ( 100px );
+            background:darken($y, 10%);
+         }
+          &:nth-of-type(5){ 
+            //top
+            height:200px;
+            transform: rotateX(  90deg ) translateZ( 100px );
+            background:$y;
+            box-shadow:inset -5px 5px 0 10px $bg;
+          }
+          &:nth-of-type(6){ 
+            //bottom
+            height:200px;
+            transform: rotateX( -90deg ) translateZ( 300px );
+            background:darken($y, 15%);
+            box-shadow:inset 0 0 0 10px $bg;
+            
+            
+        }
+          
+      }
+    }
+  
+  }
+  
+  

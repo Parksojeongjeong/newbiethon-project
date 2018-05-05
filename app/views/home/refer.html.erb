@@ -1,0 +1,99 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary justify-content-center">
+	<h2>냉장고 관리</h2>
+</nav>
+<div class="wrapper">
+		<input type="range" name="rotation-angle" min="0" max="180" data-sizing="deg" value="0">
+		<div class="fridge">
+			<div class="back-wall"></div>
+			<div class="shelf one">
+				<div class="box">
+					<script type="text/javascript">
+					document.addEventListener('mousedown', function() {
+					  // Code herebootbox.alert({
+						    message: "This is the small alert!",
+						    size: 'small'
+						});
+					});
+					</script>
+				</div>
+				<div class="tray">
+					
+				</div>
+			</div>
+			<div class="shelf two">
+				<div class="green-bowl">
+					
+				</div>
+				<div class="cake">
+					<div class="stripe">
+						
+					</div>
+					<div class="stripe">
+						
+					</div>
+				</div>
+			</div>
+			<div class="shelf three">
+				<div class="watermelon">
+					<div class="seed"></div>
+					<div class="seed"></div>
+					<div class="seed"></div>
+					<div class="seed"></div>
+					<div class="seed"></div>
+					<div class="seed"></div>
+					<div class="seed"></div>
+				</div>
+				<div class="potato"></div>
+				<div class="potato"></div>
+				<div class="potato"></div>
+				<div class="potato"></div>
+				<div class="potato"></div>
+				<div class="potato"></div>
+			</div>
+			<div class="door">
+				<div class="handle"></div>
+			</div>
+		</div>
+	</div>
+	<div id="lv-container" data-id="liverewordpress" data-uid="NzA0LzIxODg0LzgyNw==" style="clear:both;">
+    <script type="text/javascript">
+
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+        var refer = "blog.cizion.com/notice/563";
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript>라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요.</noscript>
+</div>
+<script type='text/javascript'>
+	    const input = document.querySelector('input[type="range"]');
+        const handle = document.querySelector('.handle');
+
+function handleUpdate(){
+	var suffix = this.dataset.sizing || '';
+	document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+	checkFlipAngle(this.value);
+}
+
+input.addEventListener('mousemove', handleUpdate);
+function init(){
+	document.documentElement.style.setProperty('--rotation-angle', '0deg');
+	checkFlipAngle(parseInt(document.documentElement.style.getPropertyValue('--rotation-angle')));
+}
+
+function checkFlipAngle(value){
+	if(value > 90){
+		handle.classList.add('hidden');
+	} else {
+		handle.classList.remove('hidden');
+	}
+}
+init();
+</script>

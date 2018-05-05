@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/css/clean.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="ra.js"></script>
+</head>
+
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 6.25em 1.5em 0;
+  height: 100vh;
+  text-align: center;
+  background: whitesmoke;
+}
+
+body,
+button {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1em;
+  line-height: 1.4;
+}
+@media (min-width: 450px) {
+  body,
+  button {
+    font-size: 1.125em;
+  }
+}
+
+h2 {
+  margin-bottom: 0.1875em;
+  font-size: 1.5em;
+  line-height: 1.2;
+}
+@media (min-width: 450px) {
+  h2 {
+    font-size: 2.25em;
+  }
+}
+
+a {
+  color: deepskyblue;
+  text-decoration: none;
+}
+a:not(.btn):hover {
+  color: #33ccff;
+}
+
+.btn {
+  padding: 0.75em 2.25em;
+  color: white;
+  background-color: #33ccff;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.btn:active {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+.btn:focus {
+  outline-color: #33ccff;
+}
+.btn:hover {
+  background-color: deepskyblue;
+}
+
+.btn-sm {
+  padding: 0.375em 1.125em;
+  font-size: 0.75em;
+  letter-spacing: 0.01875em;
+}
+
+.container {
+  overflow: hidden;
+  margin: 1.5em auto 0;
+  padding: 1.5em;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  background: white;
+  border: 1px solid #e8e8e8;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 3px 6px -3px;
+}
+.container p:not(:last-child) {
+  margin-bottom: 0.9375em;
+}
+
+.loader {
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  border: 6px solid transparent;
+  border-top-color: deepskyblue;
+  border-right-color: deepskyblue;
+  border-bottom-color: deepskyblue;
+  border-radius: 100%;
+  -webkit-animation: spin 0.4s linear infinite;
+          animation: spin 0.4s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+</style>
+
+<body>
+
+<button class="btn" id="search-jobs" title="Search for a job on Codepen">오늘의 요리사는?:)</button>
+<div class="container" id="job">
+  <p>식사당번 정하기!</p>
+</div>
+
+<script>
+
+	const url = 'https://codepen.io/jobs.json';
+	const $searchBtn = $('#search-jobs');
+	const $jobContainer = $('#job');
+
+	$searchBtn.on('click', getJobs);
+
+	function getJobs() {
+	  $jobContainer.html('<div class="loader"/>');
+	  
+	  $.getJSON(url)
+	    .done(data => {
+	   //   const jobs = data.jobs;
+	   //   const job = jobs[Math.floor(Math.random() * jobs.length)];
+	      const rand = Math.floor(Math.random() * 4) + 1;
+	      var arr = ['병우','민근','예랑','소정']
+	      const jobHtml = `
+	        <h2>
+	          <img src="/assets/KT${rand}.jpg">
+	        </h2>
+	        <p>${arr[rand-1]}</p>
+	        `;
+
+	      $jobContainer.html(jobHtml);
+	      $searchBtn.text('다시!');
+	  })
+	    .fail(() => {
+	      $jobContainer.html('<p>A job could not be fetched at this time</p>');
+	    })
+	          console.log(jobs);
+	}
+</script>
+
+
+
+</body>
+</html>

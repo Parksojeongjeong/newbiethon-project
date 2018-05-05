@@ -1,0 +1,5 @@
+<%= form_for @post do |f| %>
+제목 : <%= f.text_field :title %></br>
+내용 :<%= f.text_area :content %></br>
+<%= f.submit '전송' %>
+<%end%>
