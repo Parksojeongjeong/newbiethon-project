@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'home/gongjiedit/:id' => 'home#gongjishow'
   get 'home/gongjiupdate/:id' => 'home#gongjishow'
   get 'home/gongjidestroy/:id' => 'home#gongjidestroy'
-  get "home/gongjicreate" => 'home#gongjicreate'
+  post "home/gongjicreate" => 'home#gongjicreate'
   get 'home/refer' => 'home#refer'
   get 'home/gongji' => 'home#gongji'
   get 'home/clean' => 'home#clean'

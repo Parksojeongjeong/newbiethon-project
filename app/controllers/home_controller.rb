@@ -15,7 +15,8 @@ class HomeController < ApplicationController
       @post.title = params[:title]
       @post.content = params[:content]
       @post.save
-      redirect_to "/home/gongjishow/#{@post.id}"
+      # redirect_to "/home/gongjishow/#{@post.id}"
+      redirect_to "/home/gongjiindex"
     end
     
     def gongjishow
